@@ -33,6 +33,7 @@ struct ContentView_Previews: PreviewProvider {
 struct PhotoPreviewCell: View {
 
     @ObservedObject var item: Remote<UIImage>
+    @State var previewImage: UIImage?
     private(set) var photo: Photo
 
     init(photo: Photo) {
@@ -42,15 +43,19 @@ struct PhotoPreviewCell: View {
     
     var body: some View {
         HStack {
-            if item.value == nil {
+            if previewImage == nil {
                 ActivityIndicator(shouldAnimate: self.item.isLoading)
             } else {
-                Image(uiImage: item.value!)
+                Image(uiImage: self.previewImage!)
                     .resizable()
                     .frame(width: 44, height: 44)
             }
             Text(self.photo.author)
-                .onAppear { self.item.load() }
+        }
+        .onReceive(item.$result) { result in
+            if case let .success(image) = result {
+                self.previewImage = image
+            }
         }
     }
 

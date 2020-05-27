@@ -51,6 +51,7 @@ final class Remote<T>: ObservableObject {
     private let url: URL
     private let transform: (Data) -> T?
     private let db = Database()
+    var objectWillChange = ObservableObjectPublisher()
     
     init(url: URL, transform: @escaping (Data) -> T?) {
         self.url = url
@@ -61,6 +62,7 @@ final class Remote<T>: ObservableObject {
         let key = self.url.absoluteString.replacingOccurrences(of: "/", with: ".").replacingOccurrences(of: ":", with: "")
         if let image = db.retrieveData(for: key) {
             DispatchQueue.main.async {
+                self.objectWillChange.send()
                 self.result = .success(image as! T)
                 return
             }
@@ -73,6 +75,7 @@ final class Remote<T>: ObservableObject {
                     if v is UIImage {
                         self.db.save(data: (v as! UIImage).pngData() ?? Data(), for: key)
                     }
+                    self.objectWillChange.send()
                     self.result = .success(v)
                 } else {
                     self.result = .failure(RequestError())
