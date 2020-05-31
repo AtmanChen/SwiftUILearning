@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:HackerNewsAPI/HackerNewsAPI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:HackNews(UIKit)/HackNews(UIKit).xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CombineBasics/CombineBasics.xcodeproj">
    </FileRef>
    <FileRef
@@ -17,9 +23,6 @@
       location = "group:StateAndBinding/StateAndBinding.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../Knob/Knob.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:PersonList/PersonList.xcodeproj">
    </FileRef>
    <FileRef
@@ -33,9 +36,6 @@
    </FileRef>
    <FileRef
       location = "group:BasicAnimation/BasicAnimation.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../SleepTracking/SleepTracking.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:GithubSearch/GithubSearch.xcodeproj">
