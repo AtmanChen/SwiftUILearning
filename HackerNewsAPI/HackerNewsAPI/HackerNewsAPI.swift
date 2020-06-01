@@ -19,8 +19,8 @@ public struct API {
     
     public var errorDescription: String? {
       switch self {
-        case .invalidResponse: return "The server responded with garbage."
-        case .addressUnreachable(let url): return "\(url.absoluteString) is unreachable."
+      case .invalidResponse: return "The server responded with garbage."
+      case .addressUnreachable(let url): return "\(url.absoluteString) is unreachable."
       }
     }
   }
@@ -34,10 +34,10 @@ public struct API {
     
     var url: URL {
       switch self {
-        case .stories:
-          return EndPoint.baseURL.appendingPathComponent("newstories.json")
-        case .story(let id):
-          return EndPoint.baseURL.appendingPathComponent("item/\(id).json")
+      case .stories:
+        return EndPoint.baseURL.appendingPathComponent("newstories.json")
+      case .story(let id):
+        return EndPoint.baseURL.appendingPathComponent("item/\(id).json")
       }
     }
   }
@@ -82,10 +82,10 @@ public struct API {
       .decode(type: [Int].self, decoder: decoder)
       .mapError { error -> API.Error in
         switch error {
-          case is URLError:
-            return Error.addressUnreachable(EndPoint.stories.url)
-          default:
-            return Error.invalidResponse
+        case is URLError:
+          return Error.addressUnreachable(EndPoint.stories.url)
+        default:
+          return Error.invalidResponse
         }
       }
       .filter { !$0.isEmpty }
