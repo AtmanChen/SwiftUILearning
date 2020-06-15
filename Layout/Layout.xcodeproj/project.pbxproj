@@ -14,6 +14,7 @@
 		2BA4BA71247B9F8F0089A006 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BA4BA70247B9F8F0089A006 /* Preview Assets.xcassets */; };
 		2BA4BA74247B9F8F0089A006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BA4BA72247B9F8F0089A006 /* LaunchScreen.storyboard */; };
 		2BA4BA7C247BA0050089A006 /* MeasureBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA4BA7B247BA0050089A006 /* MeasureBehavior.swift */; };
+		2BF5B3602490B4D000F32C15 /* View+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5B35F2490B4D000F32C15 /* View+Badge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2BA4BA73247B9F8F0089A006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BA4BA75247B9F8F0089A006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BA4BA7B247BA0050089A006 /* MeasureBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureBehavior.swift; sourceTree = "<group>"; };
+		2BF5B35F2490B4D000F32C15 /* View+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Badge.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				2BA4BA69247B9F8D0089A006 /* SceneDelegate.swift */,
 				2BA4BA6B247B9F8D0089A006 /* ContentView.swift */,
 				2BA4BA7B247BA0050089A006 /* MeasureBehavior.swift */,
+				2BF5B35F2490B4D000F32C15 /* View+Badge.swift */,
 				2BA4BA6D247B9F8F0089A006 /* Assets.xcassets */,
 				2BA4BA72247B9F8F0089A006 /* LaunchScreen.storyboard */,
 				2BA4BA75247B9F8F0089A006 /* Info.plist */,
@@ -152,6 +155,7 @@
 				2BA4BA68247B9F8D0089A006 /* AppDelegate.swift in Sources */,
 				2BA4BA6A247B9F8D0089A006 /* SceneDelegate.swift in Sources */,
 				2BA4BA7C247BA0050089A006 /* MeasureBehavior.swift in Sources */,
+				2BF5B3602490B4D000F32C15 /* View+Badge.swift in Sources */,
 				2BA4BA6C247B9F8D0089A006 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

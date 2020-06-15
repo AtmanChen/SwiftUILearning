@@ -4,104 +4,77 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    
-    @State var isRunning: Bool = false
-    @State var now: Date = Date()
-//
-    var timer: Timer {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            self.now = Date()
-        }
+  @State var expanded: Bool = true
+  @State var isRunning: Bool = false
+  @State var now: Date = Date()
+  //
+  var timer: Timer {
+    Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+      self.now = Date()
     }
-    
-    let image = Image(systemName: "ellipsis")
-    
-    var body: some View {
-        
-        MeasureBehavior(content:
-            HStack {
-                Text("Hello World!")
-                Rectangle()
-                    .fill(Color.red)
-                    .frame(minWidth: 200)
-            }
-        )
-        
-        
-        
-//        Rectangle()
-//            .rotation(.degrees(45))
-//            .fill(Color.red)
-//            .clipped()
-//            .frame(width: 100, height: 100)
-        
-//        Circle()
-//            .fill(Color.blue)
-//            .overlay(Circle().strokeBorder(Color.white).padding(3))
-//            .overlay(
-//                Group {
-//                    if self.isRunning {
-//                        Text(countDownString(from: self.now, until: self.now.addingTimeInterval(10)))
-//                            .foregroundColor(.white)
-//                    } else {
-//                        Text("Start")
-//                            .foregroundColor(.white)
-//                            .onTapGesture {
-//                                self.isRunning = true
-//                            }
-//                    }
-//                }
-//            )
-//            .frame(width: 75, height: 75)
-        
-//        HStack {
-//            image
-//                .frame(width: 100, height: 100)
-//                .border(Color.red)
-//            image.resizable()
-//                .frame(width: 100, height: 100)
-//                .border(Color.red)
-//            image.resizable().aspectRatio(contentMode: .fit)
-//                .frame(width: 100, height: 100)
-//                .border(Color.red)
-//        }
-        
-//        Rectangle()
-//            .rotation(.degrees(45))
-//            .fill(Color.red)
-//            .border(Color.blue)
-//            .frame(width: 100, height: 100)
-        
-        
-//        MeasureBehavior(content:
-//            VStack {
-//                Text("Hello, World!")
-//                Path { p in
-//                    p.move(to: CGPoint(x: 50, y: 0))
-//                    p.addLines([
-//                        CGPoint(x: 100, y: 75),
-//                        CGPoint(x: 0, y: 75),
-//                        CGPoint(x: 50, y: 0)
-//                    ])
-//                }
-//            }
-//        )
+  }
+  
+  let image = Image(systemName: "ellipsis")
+  
+  let colors: [(Color, CGFloat)] = [(.init(white: 0.3), 50), (.init(white: 0.8), 30), (.init(white: 0.5), 75)]
+  
+  var body: some View {
+    VStack {
+      Collapsible(
+        data: colors,
+        expanded: expanded,
+        content: { (item: (Color, CGFloat)) in
+          Rectangle()
+            .fill(item.0)
+            .frame(width: item.1, height: item.1)
+        })
+      Button(expanded ? "Collapse" : "Expand") {
+        self.expanded.toggle()
+      }
+      .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+      .background(Color.blue)
+      .foregroundColor(.white)
+//      .clipShape(Capsule())
+      .badge(count: 5)
     }
-    
+  }
+  
+  
+  func countDownString(from date: Date, until nowDate: Date) -> String {
+    let calendar = Calendar(identifier: .gregorian)
+    let components = calendar
+      .dateComponents([.second]
+        ,from: nowDate,
+         to: date)
+    return String(format: "%02ds",
+                  components.second ?? 00)
+  }
+}
 
-    func countDownString(from date: Date, until nowDate: Date) -> String {
-            let calendar = Calendar(identifier: .gregorian)
-            let components = calendar
-                .dateComponents([.second]
-                    ,from: nowDate,
-                     to: date)
-            return String(format: "%02ds",
-                          components.second ?? 00)
+struct Collapsible<Element, Content: View>: View {
+  var data: [Element]
+  var expanded: Bool
+  var content: (Element) -> Content
+  var alignment: VerticalAlignment = .center
+  var body: some View {
+    HStack {
+      ForEach(data.indices, content: { self.child(at: $0) })
     }
+  }
+  private func child(at index: Int) -> some View {
+    content(data[index])
+      .frame(
+        width: expanded ? nil : 10,
+        alignment: Alignment(
+          horizontal: .leading,
+          vertical: alignment
+        )
+      )
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }

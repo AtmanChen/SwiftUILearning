@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BF5B38B2491FB7A00F32C15 /* ScrollableSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5B38A2491FB7A00F32C15 /* ScrollableSelector.swift */; };
 		2BF9E25C243EC39900F32218 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9E25B243EC39900F32218 /* AppDelegate.swift */; };
 		2BF9E25E243EC39900F32218 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9E25D243EC39900F32218 /* SceneDelegate.swift */; };
 		2BF9E260243EC39900F32218 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9E25F243EC39900F32218 /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2BF5B38A2491FB7A00F32C15 /* ScrollableSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSelector.swift; sourceTree = "<group>"; };
 		2BF9E258243EC39900F32218 /* SwiftUIBasics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIBasics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BF9E25B243EC39900F32218 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BF9E25D243EC39900F32218 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				2BF9E25B243EC39900F32218 /* AppDelegate.swift */,
 				2BF9E25D243EC39900F32218 /* SceneDelegate.swift */,
 				2BF9E25F243EC39900F32218 /* ContentView.swift */,
+				2BF5B38A2491FB7A00F32C15 /* ScrollableSelector.swift */,
 				2BF9E261243EC39C00F32218 /* Assets.xcassets */,
 				2BF9E266243EC39C00F32218 /* LaunchScreen.storyboard */,
 				2BF9E269243EC39C00F32218 /* Info.plist */,
@@ -149,6 +152,7 @@
 				2BF9E25C243EC39900F32218 /* AppDelegate.swift in Sources */,
 				2BF9E25E243EC39900F32218 /* SceneDelegate.swift in Sources */,
 				2BF9E260243EC39900F32218 /* ContentView.swift in Sources */,
+				2BF5B38B2491FB7A00F32C15 /* ScrollableSelector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

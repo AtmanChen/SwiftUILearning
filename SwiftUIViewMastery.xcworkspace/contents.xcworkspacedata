@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SharedState/SharedState.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AndroidLoadingButton/AndroidLoadingButton.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:GithubUserSearch/GithubUserSearch.xcodeproj">
    </FileRef>
    <FileRef
