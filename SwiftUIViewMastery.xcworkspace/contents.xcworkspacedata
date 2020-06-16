@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:StrechyHeader/StrechyHeader.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ActivityIndicator/ActivityIndicator.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GithubSearchUserWithComposableArchitecture/GithubSearchUserWithComposableArchitecture.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SharedState/SharedState.xcodeproj">
    </FileRef>
    <FileRef
