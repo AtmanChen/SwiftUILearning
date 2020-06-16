@@ -3,6 +3,7 @@
 import SwiftUI
 import ComposableArchitecture
 import ActivityIndicator
+import SearchBar
 
 struct GithubSearchUserError: Error, Equatable {}
 
@@ -58,16 +59,13 @@ struct ContentView: View {
     WithViewStore(self.store) { viewStore in
       NavigationView {
         List {
-          TextField(
-            "Type something...",
+          SearchBar(
             text: viewStore.binding(
               get: { $0.query },
               send: GithubSearchUserStateAction.updateQuery
-            )
-          )
-          .padding()
-          .background(Color.gray.opacity(0.4))
-          .cornerRadius(10)
+              ),
+            placeHolder: "Type something...")
+            .padding([.leading, .trailing], -8)
           if viewStore.isRequestInFlight {
             ActivityIndicator()
               .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
