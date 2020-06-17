@@ -33,7 +33,6 @@ final class GithubService {
     print(url.absoluteString)
     return session
       .dataTaskPublisher(for: url)
-      .throttle(for: .seconds(0.8), scheduler: requestQueue, latest: true)
       .receive(on: decodeQueue)
       .map { [weak self] (data, _) in
         let resp = try? self?.decoder.decode(SearchResponse.self, from: data)

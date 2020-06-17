@@ -25,12 +25,14 @@ struct GithubSearchUserEnvironment {
   
   static let `default` = GithubSearchUserEnvironment(
     mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-    users: GithubSearchUserEnvironment.apiService.search(matching:))
+    users: GithubSearchUserEnvironment.apiService.search(matching:)
+  )
 }
 
 let githubSearchUserReducer = Reducer<
   GithubSearchUserState, GithubSearchUserStateAction, GithubSearchUserEnvironment
 > { state, action, environment in
+  struct GithubSearchUserID: Hashable {}
   switch action {
   case let .updateQuery(query):
     struct SearchUserId: Hashable {}
@@ -42,6 +44,7 @@ let githubSearchUserReducer = Reducer<
       .catchToEffect()
       .debounce(id: SearchUserId(), for: 0.3, scheduler: environment.mainQueue)
       .map(GithubSearchUserStateAction.usersResponse)
+      .cancellable(id: GithubSearchUserID())
   case let .usersResponse(.success(repos)):
     state.isRequestInFlight = false
     state.repos = repos
@@ -68,7 +71,7 @@ struct ContentView: View {
             .padding([.leading, .trailing], -8)
           if viewStore.isRequestInFlight {
             ActivityIndicator()
-              .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+              .frame(maxWidth: .infinity, maxHeight: .infinity)
           } else {
             ForEach(viewStore.repos) { repo in
               RepoRow(repo: repo)
